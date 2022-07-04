@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -23,6 +24,7 @@ public class LoginTests extends TestBase{
         // 5.submit login
         app.getHelperUser().submitLogin();
         // 6.Assert ( is login success?)   logout present?PRESENT
+        Assert.assertTrue(app.getHelperUser().isLogged());
 
     }
     @Test
@@ -35,6 +37,10 @@ public class LoginTests extends TestBase{
         // 5.submit login
         app.getHelperUser().submitLogin();
         // 6.Assert ( is login unsuccessful?)   logout present? NOT
+        Assert.assertFalse(app.getHelperUser().isLogged());
+        Assert.assertTrue(app.getHelperUser().isAlertDisplayed());
+         Assert.assertTrue(app.getHelperUser().isErrorFormatDisplayed());
+
 
     }
 
